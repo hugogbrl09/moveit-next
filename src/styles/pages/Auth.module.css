@@ -88,6 +88,8 @@ color: var(--text-highlight);
 	height: 80px;
 	left: 820px;
 	top: 541px;
+
+	padding-left: 30px;
 	
 	background: linear-gradient(90deg, #4953B8 0%, rgba(73, 83, 184, 0.2) 100%);
 	border-radius: 5px 0px 0px 5px;

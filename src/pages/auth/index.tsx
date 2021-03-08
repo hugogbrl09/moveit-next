@@ -1,7 +1,17 @@
 import Head from "next/head";
+import { FormEvent, useState } from "react";
 import styles from "../../styles/pages/Auth.module.css";
+import axios from "axios";
 
 export default function AuthPage() {
+  const [username, setUsername] = useState('');
+
+  function handleSignUp(event: FormEvent) {
+    event.preventDefault();
+
+    axios.post('/api/subscribe', { username });
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -26,8 +36,18 @@ export default function AuthPage() {
           <p id={styles.inputUsername}>Digite um nome de usuário para começar</p>
         </div>
 
-        <form method="post" action="/">
-          <input type="text" placeholder="Digite seu username" id={styles.formName} />
+        <form 
+          method="post" 
+          action="/"
+          onSubmit={handleSignUp}
+          >
+          <input 
+            type="text" 
+            placeholder="Digite seu username" 
+            id={styles.formName}
+            value={username}
+            onChange={e => setUsername(e.target.value)}
+          />
           <button id={styles.formButton}>
             <img src="/icons/arrow.svg" alt="Continuar" />
           </button>
